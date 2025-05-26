@@ -49,6 +49,24 @@ class _LoginPageState extends State<LoginPage> {
       });
 
       // Simulate API call
+      // In a real app, you would call your authentication API here
+      // Use the email and password to check in the database if the user exists
+      print(_emailController.text);
+      print(_passwordController.text);
+      // Simulating if email and password are wrong
+      if (_emailController.text == "email@gmail.com" ||
+          _passwordController.text == "password") {
+        setState(() {
+          _isLoading = false;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Invalid email or password'),
+            backgroundColor: Colors.red,
+          ),
+        );
+        return;
+      }
       await Future.delayed(Duration(seconds: 2));
 
       setState(() {
